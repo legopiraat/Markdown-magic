@@ -1,6 +1,7 @@
-package com.legopiraat.markdownmagic.parser
+package io.legopiraat.markdownmagic.parser
 
-import com.legopiraat.markdownmagic.element.{ListType, MarkdownListEntry}
+import io.legopiraat.markdownmagic.element.MarkdownListEntry
+import io.legopiraat.markdownmagic.element.{Numeric, Dotted}
 
 trait ListParser {
 
@@ -12,9 +13,9 @@ trait ListParser {
   def parseListEntry(line: String): MarkdownListEntry = {
     line match {
       case line if NumericListPattern.matches(line) =>
-        MarkdownListEntry(NumericListPattern.findAllIn(line).group(2), ListType.Numeric)
+        MarkdownListEntry(NumericListPattern.findAllIn(line).group(2), Numeric)
       case line if DottedListPattern.matches(line) =>
-        MarkdownListEntry(DottedListPattern.findAllIn(line).group(2), ListType.Dotted)
+        MarkdownListEntry(DottedListPattern.findAllIn(line).group(2), Dotted)
     }
   }
 

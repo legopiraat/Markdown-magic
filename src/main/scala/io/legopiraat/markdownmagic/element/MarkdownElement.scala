@@ -1,4 +1,4 @@
-package com.legopiraat.markdownmagic.element
+package io.legopiraat.markdownmagic.element
 
 import java.net.URL
 

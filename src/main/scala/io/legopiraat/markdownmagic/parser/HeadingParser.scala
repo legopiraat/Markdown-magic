@@ -1,6 +1,6 @@
-package com.legopiraat.markdownmagic.parser
+package io.legopiraat.markdownmagic.parser
 
-import com.legopiraat.markdownmagic.element.MarkdownHeading
+import io.legopiraat.markdownmagic.element.MarkdownHeading
 
 trait HeadingParser {
 

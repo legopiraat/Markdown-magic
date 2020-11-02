@@ -1,9 +1,9 @@
-package com.legopiraat.markdownmagic
+package io.legopiraat.markdownmagic
 
 import java.io.{BufferedReader, FileReader}
 
-import com.legopiraat.markdownmagic.element._
-import com.legopiraat.markdownmagic.parser.{HeadingParser, ListParser}
+import io.legopiraat.markdownmagic.element._
+import io.legopiraat.markdownmagic.parser.{HeadingParser, ListParser}
 
 import scala.annotation.tailrec
 

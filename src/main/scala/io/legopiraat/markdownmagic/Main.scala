@@ -1,4 +1,4 @@
-import com.legopiraat.markdownmagic.MarkdownConverter
+package io.legopiraat.markdownmagic
 
 object Main {
 
