@@ -16,7 +16,7 @@ object MarkdownConverter extends ListParser with HeadingParser {
      val element = line match {
         case line if line.startsWith("#") => parseHeading(line)
         case line if startsWithListMarker(line) => parseListEntry(line)
-        case any => parseLine(line)
+        case _ => parseLine(line)
       }
       
       println(element.toString)

@@ -1,7 +1,5 @@
 package io.legopiraat.markdownmagic.element
 
-import java.net.URL
-
 trait MarkdownElement
 
 case class MarkdownHeading(txt: String, headingLevel: Int) extends MarkdownElement
