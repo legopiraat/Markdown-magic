@@ -7,10 +7,21 @@ trait HeadingParser {
   private[this] val headingIndicator = '#'
 
   def parseHeading(line: String): MarkdownHeading = {
-    val headingLevel = line.takeWhile(c => c.equals(headingIndicator)).length
-    val remainingText = line.substring(headingLevel, line.length).trim
+    val headingLevel = determineHeadingLevel(line)
+    val remainingText = getLineText(line, headingLevel)
 
     MarkdownHeading(remainingText, headingLevel)
   }
 
+  def startsWithHeadingIndicator(line: String): Boolean = {
+    line.startsWith(headingIndicator.toString)
+  }
+
+  private[this] def determineHeadingLevel(line: String): Int = {
+    line.takeWhile(c => c.equals(headingIndicator)).length
+  }
+
+  private[this] def getLineText(line: String, offset: Int): String = {
+    line.substring(offset, line.length).trim
+  }
 }
