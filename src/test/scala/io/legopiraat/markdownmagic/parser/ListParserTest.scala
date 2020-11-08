@@ -29,6 +29,15 @@ class ListParserTest extends UnitTestBase {
         result.listType shouldBe Numeric
         result.txt shouldBe "hello am an list entry"
       }
+
+      "constructed from pattern '1. ' with an inline '1.'" in {
+        val line = "1. hello 1. list entry"
+
+        val result = sut.parseListEntry(line)
+
+        result.listType shouldBe Numeric
+        result.txt shouldBe "hello 1. list entry"
+      }
     }
 
     "Be Dotted" when {
@@ -48,6 +57,15 @@ class ListParserTest extends UnitTestBase {
 
         result.listType shouldBe Dotted
         result.txt shouldBe "hello am an list entry"
+      }
+
+      "constructed from pattern '* ' with an inline '*'" in {
+        val line = "* hello am * an list entry"
+
+        val result = sut.parseListEntry(line)
+
+        result.listType shouldBe Dotted
+        result.txt shouldBe "hello am * an list entry"
       }
     }
   }

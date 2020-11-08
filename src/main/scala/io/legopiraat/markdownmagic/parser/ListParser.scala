@@ -22,5 +22,4 @@ trait ListParser {
   def startsWithListMarker(line: String): Boolean = {
     NumericListPattern.matches(line) || DottedListPattern.matches(line)
   }
-
 }

@@ -2,6 +2,10 @@
 
 Markdown magic is markdown parser that will transform a page into a markdown Abstract Syntax Tree.
 
+## The Markdown Syntax Tree
+
+![Syntax tree](MarkdownSyntaxTree.png)
+
 ## Backlog
 
 The backlog is not in particular order of importance.
