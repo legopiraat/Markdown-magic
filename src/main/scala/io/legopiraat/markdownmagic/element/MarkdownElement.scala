@@ -5,7 +5,7 @@ trait MarkdownElement
 case object MarkdownNewLine extends MarkdownElement
 case class MarkdownHeading(text: MarkdownLine, headingLevel: Int) extends MarkdownElement
 case class MarkdownListEntry(text: MarkdownLine, listType: ListType) extends MarkdownElement
-case class MarkdownLine(line: List[MarkdownTextElement])
+case class MarkdownLine(line: List[MarkdownTextElement]) extends MarkdownElement
 
 trait MarkdownTextElement
 case class MarkdownText(text: String, emphasisType: EmphasisType) extends MarkdownTextElement

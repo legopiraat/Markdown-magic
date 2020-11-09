@@ -8,16 +8,15 @@ object HeadingParser {
   }
 }
 
-class HeadingParser(lineParser: LineParser) {
+class HeadingParser(lineParser: LineParser) extends Parser {
 
   private[this] val headingIndicator = '#'
 
-  def parseHeading(line: String): MarkdownHeading = {
+  def parse(line: String): MarkdownHeading = {
     val headingLevel = determineHeadingLevel(line)
     val remainingText = getLineText(line, headingLevel)
 
-    //TODO: Line parsing
-    MarkdownHeading(MarkdownLine(List(MarkdownText(remainingText, Clear))), headingLevel)
+    MarkdownHeading(lineParser.parse(remainingText), headingLevel)
   }
 
   def startsWithHeadingIndicator(line: String): Boolean = {
