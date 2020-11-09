@@ -1,15 +1,15 @@
 package io.legopiraat.markdownmagic.parser
 
 import io.legopiraat.markdownmagic.UnitTestBase
-import io.legopiraat.markdownmagic.element.{Numeric, Dotted}
+import io.legopiraat.markdownmagic.element.{Dotted, MarkdownText, Numeric}
 
 class ListParserTest extends UnitTestBase {
 
-  case class Sut() extends ListParser
+  // TODO: Fix a good matcher
 
   "A list" should {
 
-    val sut = Sut()
+    val sut = ListParser(LineParser())
 
     "Be Numeric" when {
       "constructed from pattern '1. '" in {
@@ -18,7 +18,7 @@ class ListParserTest extends UnitTestBase {
         val result = sut.parseListEntry(line)
 
         result.listType shouldBe Numeric
-        result.txt shouldBe "hello am an list entry"
+        result.text.line.head.asInstanceOf[MarkdownText].text shouldBe "hello am an list entry"
       }
 
       "constructed from pattern '1) '" in {
@@ -27,7 +27,7 @@ class ListParserTest extends UnitTestBase {
         val result = sut.parseListEntry(line)
 
         result.listType shouldBe Numeric
-        result.txt shouldBe "hello am an list entry"
+        result.text.line.head.asInstanceOf[MarkdownText].text shouldBe "hello am an list entry"
       }
 
       "constructed from pattern '1. ' with an inline '1.'" in {
@@ -36,7 +36,7 @@ class ListParserTest extends UnitTestBase {
         val result = sut.parseListEntry(line)
 
         result.listType shouldBe Numeric
-        result.txt shouldBe "hello 1. list entry"
+        result.text.line.head.asInstanceOf[MarkdownText].text shouldBe "hello 1. list entry"
       }
     }
 
@@ -47,7 +47,7 @@ class ListParserTest extends UnitTestBase {
         val result = sut.parseListEntry(line)
 
         result.listType shouldBe Dotted
-        result.txt shouldBe "hello am an list entry"
+        result.text.line.head.asInstanceOf[MarkdownText].text shouldBe "hello am an list entry"
       }
 
       "constructed from pattern '* '" in {
@@ -56,7 +56,7 @@ class ListParserTest extends UnitTestBase {
         val result = sut.parseListEntry(line)
 
         result.listType shouldBe Dotted
-        result.txt shouldBe "hello am an list entry"
+        result.text.line.head.asInstanceOf[MarkdownText].text shouldBe "hello am an list entry"
       }
 
       "constructed from pattern '* ' with an inline '*'" in {
@@ -65,7 +65,7 @@ class ListParserTest extends UnitTestBase {
         val result = sut.parseListEntry(line)
 
         result.listType shouldBe Dotted
-        result.txt shouldBe "hello am * an list entry"
+        result.text.line.head.asInstanceOf[MarkdownText].text shouldBe "hello am * an list entry"
       }
     }
   }

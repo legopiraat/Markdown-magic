@@ -1,8 +1,14 @@
 package io.legopiraat.markdownmagic.parser
 
-import io.legopiraat.markdownmagic.element.MarkdownHeading
+import io.legopiraat.markdownmagic.element._
 
-trait HeadingParser {
+object HeadingParser {
+  def apply(lineParser: LineParser): HeadingParser = {
+    new HeadingParser(lineParser)
+  }
+}
+
+class HeadingParser(lineParser: LineParser) {
 
   private[this] val headingIndicator = '#'
 
@@ -10,7 +16,8 @@ trait HeadingParser {
     val headingLevel = determineHeadingLevel(line)
     val remainingText = getLineText(line, headingLevel)
 
-    MarkdownHeading(remainingText, headingLevel)
+    //TODO: Line parsing
+    MarkdownHeading(MarkdownLine(List(MarkdownText(remainingText, Clear))), headingLevel)
   }
 
   def startsWithHeadingIndicator(line: String): Boolean = {
