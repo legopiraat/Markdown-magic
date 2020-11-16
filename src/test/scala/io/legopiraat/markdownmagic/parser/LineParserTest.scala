@@ -15,14 +15,16 @@ class LineParserTest extends UnitTestBase {
         MarkdownText("Hello", Clear),
         MarkdownText("am", Bold),
         MarkdownText("a", Italic),
-        MarkdownText("line and", Clear),
+        MarkdownText("line", Clear),
+        MarkdownText("and", Clear),
         MarkdownHyperLink(MarkdownText("hyperlink", Clear), "www.google.com"),
-        MarkdownText("and image", Clear),
-        MarkdownImage(MarkdownText("image", Clear), "image.png"))
+        MarkdownText("and", Clear),
+        MarkdownText("image", Clear),
+        MarkdownImage(MarkdownText("image.", Clear), "image.png"))
 
       val result = sut.parse(line)
 
-      result shouldBe expectedResult
+      result.line shouldBe expectedResult
     }
   }
 }

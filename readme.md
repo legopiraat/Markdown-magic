@@ -16,3 +16,6 @@ The backlog is not in particular order of importance.
 - Add support for images
 - Add support for bold, italic
 - Add support for font information (to transform font in the output file)
+- Add support for tables
+- Add support for inline code `val code = true`
+- Add support for code blocks
